@@ -10,4 +10,5 @@ router.post('/login', authController.login);
 // Route to get user details
 router.get('/userconnect', authMiddleware, authController.userConnect);
 
+
 module.exports = router
