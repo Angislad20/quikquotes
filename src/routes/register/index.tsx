@@ -1,6 +1,6 @@
 import { component$, useStore, $ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
-import './register-form.css';
+import './register.css';
 
 interface RegisterForm {
   username: string;
@@ -70,7 +70,10 @@ const Register = component$(() => {
           />
           <label>Mot de passe</label>
         </div>
-        <button type="submit">Connexion</button>
+        <button type="submit">Inscrivez-vous</button>
+        <div class="info-text">
+          En vous inscrivant, vous acceptez nos <Link href="/terms">conditions d'utilisation</Link> et notre <Link href="/privacy">politique de confidentialité</Link>.
+        </div>
       </form>
 
       {msg.success && <div class="message success">{msg.success}</div>}
@@ -78,7 +81,6 @@ const Register = component$(() => {
 
       <div class="bottom-links">
         <p>Déjà inscrit ? <Link href="/login">Connectez-vous</Link></p>
-        <p><Link href="/forgot-password">Mot de passe oublié ?</Link></p>
       </div>
     </div>
   );

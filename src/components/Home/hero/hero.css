@@ -1,0 +1,53 @@
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+  
+          .hero-content {
+            flex: 1;
+            padding-right: 3rem;
+          }
+  
+          .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+          }
+  
+          .quote-illustration {
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+          }
+  
+          h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+          }
+  
+          h1 span {
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+  
+          .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+          }
+  
+          .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+          }

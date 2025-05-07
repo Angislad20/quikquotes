@@ -1,0 +1,187 @@
+ /* Popular Quotes Section */
+ .popular-quotes {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .quote-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 
+      0 10px 25px var(--glass-shadow),
+      0 1px 3px rgba(0, 0, 0, 0.05),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+      0 15px 35px var(--glass-shadow),
+      0 1px 3px rgba(0, 0, 0, 0.05),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+
+  .quote-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .quote-content::before {
+    content: "";
+    font-size: 4rem;
+    position: absolute;
+    top: -1.5rem;
+    left: -0.5rem;
+    color: var(--orange-primary);
+    opacity: 0.2;
+    font-family: Georgia, serif;
+  }
+
+  .quote-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--orange-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: var(--orange-primary);
+  }
+
+  .author-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .author-info p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .quote-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .like-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+
+  .like-button:hover {
+    color: var(--orange-primary);
+    background: rgba(255, 107, 0, 0.08);
+  }
+
+  .like-button i {
+    font-size: 1.2rem;
+  }
+
+        @media (max-width: 900px) {
+          .hero {
+            flex-direction: column;
+            text-align: center;
+            padding: 3rem 1.5rem;
+          }
+
+          .hero-content {
+            padding-right: 0;
+            margin-bottom: 3rem;
+          }
+
+          h1 {
+            font-size: 2.5rem;
+          }
+
+          .cta-buttons {
+            justify-content: center;
+          }
+
+          .feature-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          }
+        }
+
+        @media (max-width: 768px) {
+          .navbar {
+            padding: 1rem;
+          }
+
+          .nav-links {
+            display: none;
+          }
+
+          .mobile-menu-btn {
+            display: block;
+          }
+
+          .section-title h2 {
+            font-size: 1.8rem;
+          }
+
+          .quotes-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .cta-section h2 {
+            font-size: 2rem;
+          }
+
+          .footer-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+          display: none;
+          background: none;
+          border: none;
+          font-size: 1.5rem;
+          color: var(--text-dark);
+          cursor: pointer;
+        }
+
+        /* SVG Icons */
+        .quote-icon {
+          fill: var(--orange-primary);
+          width: 24px;
+          height: 24px;
+        }
