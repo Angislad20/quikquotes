@@ -13,7 +13,7 @@ router.get('/userconnect', authMiddleware, authController.userConnect);
 // Route to update user details
 router.post('/forgot-password', authController.requestPasswordReset);
 // Route to reset password
-router.post('/reset-password', authController.resetPassword);
+router.post('/reset-password', authController.forgotPassword);
 
 
 module.exports = router
