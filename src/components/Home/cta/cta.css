@@ -4,6 +4,7 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    margin-bottom: 2rem;
   }
 
   .cta-section::before {

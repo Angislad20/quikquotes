@@ -37,7 +37,7 @@ const ForgotPassword = component$(() => {
         <button onClick$={handleSubmit}>Reinitialisation de votre mot de passe</button>
         
         <div class="info-text">
-          Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+          Entrez votre adresse e-mail et nous vous enverrons un code otp pour réinitialiser votre mot de passe.
         </div>
       </div>
 
