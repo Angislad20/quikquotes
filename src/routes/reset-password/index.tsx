@@ -1,4 +1,4 @@
-import { useStore } from '@builder.io/qwik';
+import { $, useStore } from '@builder.io/qwik';
 import { useNavigate } from '@builder.io/qwik-city';
 import { component$ } from '@builder.io/qwik';
 import './reset-password.css';
@@ -21,7 +21,7 @@ export default component$(() => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: Event) => {
+  const handleSubmit = $(async (e: Event) => {
     e.preventDefault();
 
     // Validation des mots de passe
@@ -61,7 +61,7 @@ export default component$(() => {
     } finally {
       store.isLoading = false;
     }
-  };
+  });
 
   return (
     <div class="reset-password-container">
