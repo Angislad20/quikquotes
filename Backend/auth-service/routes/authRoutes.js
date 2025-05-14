@@ -11,9 +11,12 @@ router.post('/login', authController.login);
 router.get('/userconnect', authMiddleware, authController.userConnect);
 
 // Route to update user details
-router.post('/forgot-password', authController.requestPasswordReset);
+router.post('/forgot-password', authController.forgotPassword);
 // Route to reset password
-router.post('/reset-password', authController.forgotPassword);
+router.post('/reset-password', authController.resetPassword);
+// Route to verify OTP
+router.post('/verify-otp', authController.verifyOtp);
+
 
 
 module.exports = router

@@ -2,6 +2,7 @@ const pool = require('../database/db');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { RespondJSONSuccess, RespondJSONError } = require('../utils/response');
+const nodemailer = require('nodemailer');
 
 // Register a new user
 exports.register = async (req, res) => {
@@ -123,8 +124,17 @@ exports.forgotPassword = async (req, res) => {
 
         const user = userResult.rows[0];
 
+        const crypto = require('crypto');
+
+        function generateSecureOtp() {
+            const buffer = crypto.randomBytes(4);
+            const otp = buffer.readUInt32BE() % 900000 + 100000;
+            return otp.toString();
+        }
+
+
         // Générer un code OTP
-        const otp = crypto.randomInt(100000, 999999).toString(); // Génère un OTP à 6 chiffres
+        const otp = generateSecureOtp(); // Génère un OTP à 6 chiffres
         const expiresAt = new Date(Date.now() + 1000 * 60 * 10); // 10 minutes de validité
 
         // Insérer l'OTP dans la base de données
@@ -164,3 +174,34 @@ exports.forgotPassword = async (req, res) => {
         return res.status(500).json({ message: 'Erreur interne du serveur' });
     }
 };
+
+exports.verifyOtp = async (req, res) => {
+    const { email, otp } = req.body;
+  
+    try {
+      const userResult = await pool.query('SELECT * FROM users WHERE email = $1', [email.trim()]);
+      if (userResult.rows.length === 0) {
+        return res.status(400).json({ message: 'Aucun compte trouvé avec cet e-mail' });
+      }
+  
+      const userId = userResult.rows[0].id;
+  
+      const otpResult = await pool.query(
+        'SELECT * FROM password_reset_codes WHERE user_id = $1 AND otp = $2 ORDER BY expires_at DESC LIMIT 1',
+        [userId, otp]
+      );
+  
+      if (
+        otpResult.rows.length === 0 ||
+        new Date(otpResult.rows[0].expires_at) < new Date()
+      ) {
+        return res.status(400).json({ message: 'Code OTP invalide ou expiré' });
+      }
+  
+      return res.status(200).json({ message: 'OTP valide' });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Erreur interne du serveur' });
+    }
+  };
+  
